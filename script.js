@@ -17,7 +17,8 @@ console.log(
 
 // 🦁 Demande avec `await prompt` la réponse de l'utilisateur. (dans une variable `operator`)
 
-const operator = Number(await prompt('Enter the operator : '));
+// const operator = Number(await prompt('Enter the operator : '));
+const limitNumber = 100000000000000;
 
 // 🦁 Si la réponse n'est pas égale à 1 ou 2, affiche une log d'erreur et quitte le programme avec `process.exit(1)`
 
@@ -31,22 +32,20 @@ if (operator !== 1 && operator !== 2 && operator !== 3 && operator !== 4) {
 // 💡 if (condition1 && condition2)
 // 💡 On vérifie que la condition1 est vraie mais AUSSI la condition2 !
 
-const limitNumber = 100000000000000;
-
 const firstNumber = Number(await prompt('Enter the first number : '));
 
-if (Number.isNaN(firstNumber) || firstNumber > Math.abs(limitNumber)) {
+if (Number.isNaN(firstNumber) || Math.abs(firstNumber) > limitNumber) {
   console.log(
-    'Error : firstNumber is not a number or its greater than 100000000000000'
+    `Error: The number is not valid or its greater / lower than ${limitNumber}`
   );
   process.exit(1);
 }
 
 const secondNumber = Number(await prompt('Enter the second number : '));
 
-if (Number.isNaN(secondNumber) || secondNumber > Math.abs(limitNumber)) {
+if (Number.isNaN(secondNumber) || Math.abs(secondNumber) > limitNumber) {
   console.log(
-    'Error : secondNumber is not a number or its greater than 100000000000000'
+    `Error : secondNumber is not a number or its greater / lower than ${limitNumber}`
   );
   process.exit(1);
 }
